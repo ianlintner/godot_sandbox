@@ -3,13 +3,18 @@ extends Area2D
 # Signal emitted when treasure is collected
 signal treasure_collected
 
+var collected = false
+
 func _ready():
 	add_to_group("treasure")
 	body_entered.connect(_on_body_entered)
 
 func _on_body_entered(body):
+	if collected:
+		return
 	# Check if player touched the treasure
 	if body.is_in_group("player") or body.name == "Player":
+		collected = true
 		collect()
 
 func collect():
