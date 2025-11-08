@@ -1,0 +1,112 @@
+[gd_scene load_steps=5 format=3 uid="uid://cjt4bm8x3nwb5"]
+
+[ext_resource type="Script" path="res://scripts/main.gd" id="1_main"]
+[ext_resource type="PackedScene" uid="uid://bqwx4r7yxn8hg" path="res://scenes/player.tscn" id="2_player"]
+[ext_resource type="PackedScene" uid="uid://b2y5x8f3qm7hv" path="res://scenes/hud.tscn" id="3_hud"]
+[ext_resource type="PackedScene" uid="uid://dgh8n2p5v7xkw" path="res://scenes/enemy.tscn" id="4_enemy"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_platform"]
+size = Vector2(100, 20)
+
+[node name="Main" type="Node2D"]
+script = ExtResource("1_main")
+
+[node name="Player" parent="." instance=ExtResource("2_player")]
+position = Vector2(50, 100)
+
+[node name="Camera2D" type="Camera2D" parent="."]
+position = Vector2(160, 90)
+enabled = true
+
+[node name="HUD" parent="." instance=ExtResource("3_hud")]
+
+[node name="World" type="Node2D" parent="."]
+
+[node name="Ground" type="StaticBody2D" parent="World" groups=["world"]]
+position = Vector2(160, 170)
+collision_layer = 1
+collision_mask = 0
+
+[node name="Polygon2D" type="Polygon2D" parent="World/Ground"]
+color = Color(0.4, 0.8, 0.4, 1)
+polygon = PackedVector2Array(-160, -10, 480, -10, 480, 10, -160, 10)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="World/Ground"]
+position = Vector2(160, 0)
+shape = SubResource("RectangleShape2D_platform")
+scale = Vector2(6.4, 1)
+
+[node name="Platform1" type="StaticBody2D" parent="World" groups=["world"]]
+position = Vector2(150, 120)
+collision_layer = 1
+collision_mask = 0
+
+[node name="Polygon2D" type="Polygon2D" parent="World/Platform1"]
+color = Color(0.6, 0.4, 0.2, 1)
+polygon = PackedVector2Array(-50, -10, 50, -10, 50, 10, -50, 10)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="World/Platform1"]
+shape = SubResource("RectangleShape2D_platform")
+
+[node name="Platform2" type="StaticBody2D" parent="World" groups=["world"]]
+position = Vector2(280, 100)
+collision_layer = 1
+collision_mask = 0
+
+[node name="Polygon2D" type="Polygon2D" parent="World/Platform2"]
+color = Color(0.6, 0.4, 0.2, 1)
+polygon = PackedVector2Array(-50, -10, 50, -10, 50, 10, -50, 10)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="World/Platform2"]
+shape = SubResource("RectangleShape2D_platform")
+
+[node name="Platform3" type="StaticBody2D" parent="World" groups=["world"]]
+position = Vector2(400, 80)
+collision_layer = 1
+collision_mask = 0
+
+[node name="Polygon2D" type="Polygon2D" parent="World/Platform3"]
+color = Color(0.6, 0.4, 0.2, 1)
+polygon = PackedVector2Array(-50, -10, 50, -10, 50, 10, -50, 10)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="World/Platform3"]
+shape = SubResource("RectangleShape2D_platform")
+
+[node name="LeftWall" type="StaticBody2D" parent="World" groups=["world"]]
+position = Vector2(0, 90)
+collision_layer = 1
+collision_mask = 0
+
+[node name="Polygon2D" type="Polygon2D" parent="World/LeftWall"]
+color = Color(0.3, 0.3, 0.3, 1)
+polygon = PackedVector2Array(-10, -90, 10, -90, 10, 90, -10, 90)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="World/LeftWall"]
+shape = SubResource("RectangleShape2D_platform")
+rotation = 1.5708
+scale = Vector2(1.8, 0.2)
+
+[node name="RightWall" type="StaticBody2D" parent="World" groups=["world"]]
+position = Vector2(640, 90)
+collision_layer = 1
+collision_mask = 0
+
+[node name="Polygon2D" type="Polygon2D" parent="World/RightWall"]
+color = Color(0.3, 0.3, 0.3, 1)
+polygon = PackedVector2Array(-10, -90, 10, -90, 10, 90, -10, 90)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="World/RightWall"]
+shape = SubResource("RectangleShape2D_platform")
+rotation = 1.5708
+scale = Vector2(1.8, 0.2)
+
+[node name="Enemies" type="Node2D" parent="."]
+
+[node name="Enemy1" parent="Enemies" instance=ExtResource("4_enemy")]
+position = Vector2(200, 150)
+
+[node name="Enemy2" parent="Enemies" instance=ExtResource("4_enemy")]
+position = Vector2(350, 80)
+
+[node name="Enemy3" parent="Enemies" instance=ExtResource("4_enemy")]
+position = Vector2(500, 150)
