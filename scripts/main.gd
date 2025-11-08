@@ -15,6 +15,10 @@ func _ready():
 	# Add player to group for enemy detection
 	player.add_to_group("player")
 
+func _process(_delta):
+	# Make camera follow player horizontally
+	camera.position.x = clamp(player.position.x, 160, 480)
+
 func _on_player_health_changed(new_health):
 	hud.update_health(new_health, player.max_health)
 
