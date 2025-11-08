@@ -25,3 +25,9 @@ func show_game_over():
 	game_over_label.text = "GAME OVER"
 	game_over_label.position = Vector2(120, 80)
 	add_child(game_over_label)
+
+func show_level_complete():
+	var level_complete_label = Label.new()
+	level_complete_label.text = "LEVEL COMPLETE!"
+	level_complete_label.position = Vector2(100, 80)
+	add_child(level_complete_label)
