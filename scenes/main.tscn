@@ -1,9 +1,10 @@
-[gd_scene load_steps=5 format=3 uid="uid://cjt4bm8x3nwb5"]
+[gd_scene load_steps=6 format=3 uid="uid://cjt4bm8x3nwb5"]
 
 [ext_resource type="Script" path="res://scripts/main.gd" id="1_main"]
 [ext_resource type="PackedScene" uid="uid://bqwx4r7yxn8hg" path="res://scenes/player.tscn" id="2_player"]
 [ext_resource type="PackedScene" uid="uid://b2y5x8f3qm7hv" path="res://scenes/hud.tscn" id="3_hud"]
 [ext_resource type="PackedScene" uid="uid://dgh8n2p5v7xkw" path="res://scenes/enemy.tscn" id="4_enemy"]
+[ext_resource type="PackedScene" uid="uid://c8k4x5m2p3qrw" path="res://scenes/treasure.tscn" id="5_treasure"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_platform"]
 size = Vector2(100, 20)
@@ -19,6 +20,9 @@ position = Vector2(160, 90)
 enabled = true
 
 [node name="HUD" parent="." instance=ExtResource("3_hud")]
+
+[node name="Treasure" parent="." instance=ExtResource("5_treasure")]
+position = Vector2(600, 140)
 
 [node name="World" type="Node2D" parent="."]
 

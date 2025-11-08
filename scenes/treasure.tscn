@@ -1,0 +1,22 @@
+[gd_scene load_steps=3 format=3 uid="uid://c8k4x5m2p3qrw"]
+
+[ext_resource type="Script" path="res://scripts/treasure.gd" id="1_treasure"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_treasure"]
+size = Vector2(20, 20)
+
+[node name="Treasure" type="Area2D"]
+collision_layer = 0
+collision_mask = 2
+script = ExtResource("1_treasure")
+
+[node name="Sprite2D" type="Polygon2D" parent="."]
+color = Color(1, 0.843, 0, 1)
+polygon = PackedVector2Array(-10, -10, 10, -10, 10, 10, -10, 10)
+
+[node name="InnerSprite" type="Polygon2D" parent="."]
+color = Color(1, 1, 0.4, 1)
+polygon = PackedVector2Array(-6, -6, 6, -6, 6, 6, -6, 6)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("RectangleShape2D_treasure")
