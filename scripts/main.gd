@@ -29,12 +29,20 @@ func _on_player_health_changed(new_health):
 	hud.update_health(new_health, player.max_health)
 
 func _on_player_died():
+	# Don't trigger game over if level is already complete
+	if level_complete:
+		return
+	
 	hud.show_game_over()
 	# Disable player input by removing from tree
 	await get_tree().create_timer(2.0).timeout
 	get_tree().reload_current_scene()
 
 func _on_treasure_collected():
+	# Prevent multiple level completions
+	if level_complete:
+		return
+	
 	level_complete = true
 	hud.show_level_complete()
 	# Disable player movement
