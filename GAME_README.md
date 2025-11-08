@@ -12,6 +12,7 @@ A 2D platformer inspired by classic NES Capcom games like Duck Tales and Mega Ma
 - **Level Design**: Platforms to navigate, walls to contain the action
 - **Hit Detection**: Projectiles destroy enemies, enemies damage player on contact
 - **Invulnerability Frames**: After taking damage, player briefly becomes invulnerable with flashing effect
+- **Level Goal**: Reach the golden treasure at the end of the level to complete it
 
 ## Controls
 
@@ -50,12 +51,14 @@ godot_sandbox/
 │   ├── player.tscn      # Player character
 │   ├── enemy.tscn       # Enemy character
 │   ├── bullet.tscn      # Projectile
+│   ├── treasure.tscn    # Level goal/treasure
 │   └── hud.tscn         # UI/Health display
 ├── scripts/
 │   ├── main.gd          # Game manager
 │   ├── player.gd        # Player controller
 │   ├── enemy.gd         # Enemy AI
 │   ├── bullet.gd        # Projectile behavior
+│   ├── treasure.gd      # Treasure/goal behavior
 │   └── hud.gd           # UI controller
 └── project.godot        # Project configuration
 ```
@@ -92,6 +95,7 @@ This is a Minimum Viable Product with core features:
 - ✅ Camera following the player
 - ✅ Scrolling level (640px wide)
 - ✅ Game over state
+- ✅ Level completion goal (treasure/collectible)
 
 ### Future Enhancements
 Potential additions beyond MVP:
@@ -111,6 +115,7 @@ Current MVP uses simple colored geometric shapes:
 - **Player**: Blue rectangle (16x24 pixels)
 - **Enemies**: Red squares (16x16 pixels)
 - **Bullets**: Yellow squares (8x8 pixels)
+- **Treasure**: Golden/yellow squares (20x20 pixels) with inner highlight
 - **Platforms**: Brown rectangles
 - **Ground**: Green rectangle
 - **Walls**: Gray rectangles
